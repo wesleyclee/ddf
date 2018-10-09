@@ -23,6 +23,7 @@ import com.google.common.collect.ImmutableMap;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Properties;
 import org.junit.BeforeClass;
@@ -31,7 +32,7 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PropertiesLoaderTest {
@@ -100,7 +101,7 @@ public class PropertiesLoaderTest {
   public void testLoadPropertiesWithProperties() throws Exception {
     Properties testProperties = PROPERTIES_LOADER.loadProperties(propertiesFile.getCanonicalPath());
 
-    assertThat(testProperties.entrySet(), equalTo(EXAMPLE_MAP.entrySet()));
+    assertThat(new HashSet<>(testProperties.entrySet()), equalTo(EXAMPLE_MAP.entrySet()));
   }
 
   @Test
@@ -109,7 +110,7 @@ public class PropertiesLoaderTest {
         PropertiesLoader.attemptLoadWithSpring(
             PROPERTIES_FILENAME, this.getClass().getClassLoader());
 
-    assertThat(testProperties.entrySet(), equalTo(EXAMPLE_MAP.entrySet()));
+    assertThat(new HashSet<>(testProperties.entrySet()), equalTo(EXAMPLE_MAP.entrySet()));
   }
 
   @Test
@@ -125,7 +126,7 @@ public class PropertiesLoaderTest {
         PropertiesLoader.attemptLoadWithSpringAndClassLoader(
             PROPERTIES_FILENAME, this.getClass().getClassLoader());
 
-    assertThat(testProperties.entrySet(), equalTo(EXAMPLE_MAP.entrySet()));
+    assertThat(new HashSet<>(testProperties.entrySet()), equalTo(EXAMPLE_MAP.entrySet()));
   }
 
   @Test
@@ -141,7 +142,7 @@ public class PropertiesLoaderTest {
     Properties testProperties =
         PropertiesLoader.attemptLoadWithFileSystem(propertiesFile.getPath(), null);
 
-    assertThat(testProperties.entrySet(), equalTo(EXAMPLE_MAP.entrySet()));
+    assertThat(new HashSet<>(testProperties.entrySet()), equalTo(EXAMPLE_MAP.entrySet()));
   }
 
   @Test
@@ -157,7 +158,7 @@ public class PropertiesLoaderTest {
     Properties testProperties =
         PropertiesLoader.attemptLoadAsResource("/" + PROPERTIES_FILENAME, null);
 
-    assertThat(testProperties.entrySet(), equalTo(EXAMPLE_MAP.entrySet()));
+    assertThat(new HashSet<>(testProperties.entrySet()), equalTo(EXAMPLE_MAP.entrySet()));
   }
 
   @Test
@@ -184,6 +185,7 @@ public class PropertiesLoaderTest {
     Properties testProperties =
         PropertiesLoader.substituteSystemPropertyPlaceholders(propertiesMock);
 
-    assertThat(testProperties.entrySet(), equalTo(testMapSystemPropertiesAfter.entrySet()));
+    assertThat(
+        new HashSet<>(testProperties.entrySet()), is(testMapSystemPropertiesAfter.entrySet()));
   }
 }

@@ -66,11 +66,6 @@
             <artifactId>json-smart</artifactId>
         </dependency>
         <dependency>
-            <groupId>net.minidev</groupId>
-            <artifactId>asm</artifactId>
-            <version>${net.minidev.asm.version}</version>
-        </dependency>
-        <dependency>
             <groupId>ddf.mime.core</groupId>
             <artifactId>mime-core-api</artifactId>
         </dependency>

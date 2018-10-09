@@ -65,10 +65,6 @@
             <version>${json-smart.version}</version>
         </dependency>
         <dependency>
-            <groupId>net.minidev</groupId>
-            <artifactId>asm</artifactId>
-        </dependency>
-        <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
         </dependency>
