@@ -59,26 +59,16 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
         </dependency>
+
+        <!--todo Is an embed correct/sufficient or do we need something else/better?-->
+        <dependency>
+            <groupId>ddf.jaxb</groupId>
+            <artifactId>security-cas-tokenvalidator-jaxb</artifactId>
+            <version>${ddf.jaxb.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb2-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <schemaDirectory>src/main/resources/META-INF</schemaDirectory>
-                    <schemaIncludes>
-                        <include>cas/cas2.xsd</include>
-                    </schemaIncludes>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
@@ -86,7 +76,8 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Embed-Dependency>
-                            cas-client-core
+                            cas-client-core,
+                            security-cas-tokenvalidator-jaxb
                         </Embed-Dependency>
                         <Import-Package>
                             *

@@ -68,6 +68,9 @@
         <codice-test.version>0.2-SNAPSHOT</codice-test.version>
         <!-- Must MANUALLY update this if the AC Debugger project's version changes -->
         <acdebugger.version>1.5</acdebugger.version>
+        <!-- Must MANUALLY update this if the DDF Jaxb project's version changes -->
+        <ddf.jaxb.version>1.0.0-SNAPSHOT</ddf.jaxb.version>
+
         <!--Documentation Replacements-->
         <branding>DDF</branding>
         <branding-lowercase>ddf</branding-lowercase>

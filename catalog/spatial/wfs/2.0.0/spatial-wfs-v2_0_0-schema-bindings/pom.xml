@@ -47,60 +47,6 @@
                 <artifactId>maven-source-plugin</artifactId>
                 <version>${maven-source-plugin.version}</version>
             </plugin>
-            <plugin>
-                <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb2-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>wfs-generate</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <extension>true</extension>
-                            <forceRegenerate>true</forceRegenerate>
-                            <schemaDirectory>src/main/resources</schemaDirectory>
-                            <schemaIncludes>
-                                <include>wfs/2.0.0/wfs.xsd</include>
-                            </schemaIncludes>
-                            <bindingDirectory>src/main/bindings</bindingDirectory>
-                            <bindingIncludes>
-                                <include>binding.xjb</include>
-                            </bindingIncludes>
-                            <extension>true</extension>
-                            <strict>false</strict>
-                            <episodes>
-                                <episode>
-                                    <groupId>org.jvnet.ogc</groupId>
-                                    <artifactId>filter-v_2_0_0-schema</artifactId>
-                                </episode>
-                                <episode>
-                                    <groupId>org.jvnet.ogc</groupId>
-                                    <artifactId>ows-v_1_1_0-schema</artifactId>
-                                </episode>
-                            </episodes>
-                            <args>
-                                <arg>-XtoString</arg>
-                                <arg>-Xequals</arg>
-                                <arg>-XhashCode</arg>
-                                <arg>-Xcopyable</arg>
-                                <arg>-Xmergeable</arg>
-                                <arg>-Xsetters</arg>
-                                <arg>-Xwildcard</arg>
-                                <arg>-Xinject-code</arg>
-                                <arg>-Xinheritance</arg>
-                            </args>
-                            <plugins>
-                                <plugin>
-                                    <groupId>org.jvnet.jaxb2_commons</groupId>
-                                    <artifactId>jaxb2-basics</artifactId>
-                                    <version>0.6.0</version>
-                                </plugin>
-                            </plugins>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <!-- Replaced antrun deletion of directories with compiler excludes.
              Need to exclude several generated classes from the compile phase -->
             <plugin>

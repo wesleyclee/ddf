@@ -19,6 +19,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
+import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;
@@ -104,7 +105,11 @@ public class LdapClaimsHandlerTest {
     mockBindRequest = mock(BindRequest.class);
     PowerMockito.mockStatic(BindMethodChooser.class);
     when(BindMethodChooser.selectBindMethod(
-            eq(BINDING_TYPE), eq(BIND_USER_DN), eq(BIND_USER_CREDENTIALS), eq(REALM), eq(KCD)))
+            eq(BINDING_TYPE),
+            eq(BIND_USER_DN),
+            eq(BIND_USER_CREDENTIALS),
+            nullable(String.class),
+            nullable(String.class)))
         .thenReturn(mockBindRequest);
     Map<String, String> map = new HashMap<>();
     map.put(NAME_IDENTIFIER_CLAIM_URI, ATTRIBUTE_NAME);
@@ -136,6 +141,7 @@ public class LdapClaimsHandlerTest {
     claimsHandler.setRealm(REALM);
     claimsHandler.setKdcAddress(KCD);
     claimsHandler.setUserBaseDN(USER_BASE_DN);
+    claimsHandler.setBindUserDN(BIND_USER_DN);
     claims = new ClaimCollection();
     Claim claim = new Claim();
     claim.setClaimType(new URI(NAME_IDENTIFIER_CLAIM_URI));
