@@ -111,9 +111,9 @@ public class LdapClaimsHandlerTest {
     PowerMockito.mockStatic(AttributeMapLoader.class);
     when(AttributeMapLoader.buildClaimsMapFile(anyString())).thenReturn(map);
     when(AttributeMapLoader.getUser(any(Principal.class)))
-        .then(i -> i.getArgumentAt(0, Principal.class).getName());
+        .then(i -> i.<Principal>getArgument(0).getName());
     when(AttributeMapLoader.getBaseDN(any(Principal.class), anyString(), eq(false)))
-        .then(i -> i.getArgumentAt(1, String.class));
+        .then(i -> i.getArgument(1));
     claimsHandler = new LdapClaimsHandler();
     mockBindResult = mock(BindResult.class);
     mockConnection = mock(Connection.class);
