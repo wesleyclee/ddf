@@ -21,9 +21,9 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
@@ -70,7 +70,7 @@ public class SeedCommandTest extends CommandCatalogFrameworkCommon {
     catalogFramework = mock(CatalogFramework.class);
     doReturn(mockResourceResponse())
         .when(catalogFramework)
-        .getResource(any(ResourceRequest.class), anyString());
+        .getResource(any(ResourceRequest.class), nullable(String.class));
 
     seedCommand = new SeedCommand();
     seedCommand.catalogFramework = catalogFramework;

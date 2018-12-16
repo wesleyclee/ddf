@@ -239,8 +239,6 @@ public class BackupCommandTest {
     expectedException.expect(IllegalArgumentException.class);
     expectedException.expectMessage(SEE_COMMAND_USAGE_MESSAGE);
 
-    when(mockHttpWrapper.execute(any(URI.class))).thenReturn(mockResponse(HttpStatus.SC_OK, ""));
-
     BackupCommand backupCommand =
         new BackupCommand() {
           @Override
