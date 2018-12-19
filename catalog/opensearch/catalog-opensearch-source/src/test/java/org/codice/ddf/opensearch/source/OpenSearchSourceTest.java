@@ -19,6 +19,7 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.collection.IsMapContaining.hasEntry;
+import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyBoolean;
 import static org.mockito.Matchers.anyInt;
@@ -406,7 +407,7 @@ public class OpenSearchSourceTest {
 
     doReturn(webClient)
         .when(factory)
-        .getWebClientForSubject(any(org.apache.shiro.subject.Subject.class));
+        .getWebClientForSubject(nullable(org.apache.shiro.subject.Subject.class));
     doReturn(webClient).when(factory).getWebClient();
 
     when(clientFactoryFactory.getSecureCxfClientFactory(any(), any())).thenReturn(factory);
@@ -641,7 +642,7 @@ public class OpenSearchSourceTest {
     // given
     ResourceReader mockReader = mock(ResourceReader.class);
     when(response.getEntity()).thenReturn(getBinaryData());
-    when(mockReader.retrieveResource(any(URI.class), any(Map.class)))
+    when(mockReader.retrieveResource(nullable(URI.class), any(Map.class)))
         .thenReturn(new ResourceResponseImpl(new ResourceImpl(getBinaryData(), "")));
     MultivaluedMap<String, Object> headers = new MultivaluedHashMap<>();
     headers.put(HttpHeaders.CONTENT_TYPE, Collections.singletonList("application/octet-stream"));
@@ -670,7 +671,7 @@ public class OpenSearchSourceTest {
     ResourceReader mockReader = mock(ResourceReader.class);
     when(response.getEntity()).thenReturn(getBinaryData());
     when(mockReader.retrieveResource(
-            any(URI.class),
+            nullable(URI.class),
             argThat(
                 allOf(
                     hasEntry("username", (Serializable) "user"),
