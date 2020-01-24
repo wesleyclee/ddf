@@ -130,6 +130,7 @@
         <feature>admin-core</feature>
         <feature>ddf-branding</feature>
         <feature>branding-registry</feature>
+        <bundle>mvn:javax.activation/javax.activation-api/1.2.0</bundle>
         <bundle>mvn:ddf.admin/admin-ui/${project.version}</bundle>
     </feature>
 

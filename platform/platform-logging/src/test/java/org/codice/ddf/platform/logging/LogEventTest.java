@@ -24,6 +24,7 @@ import static org.ops4j.pax.logging.PaxLogger.LEVEL_INFO;
 import static org.ops4j.pax.logging.PaxLogger.LEVEL_TRACE;
 import static org.ops4j.pax.logging.PaxLogger.LEVEL_WARNING;
 
+import java.util.Map;
 import java.util.Properties;
 import org.codice.ddf.platform.logging.LogEvent.Level;
 import org.junit.Test;
@@ -179,7 +180,7 @@ public class LogEventTest {
     when(mockPaxLoggingEvent.getLevel()).thenReturn(getMockPaxLevel(level));
     when(mockPaxLoggingEvent.getMessage()).thenReturn(message);
     when(mockPaxLoggingEvent.getProperties())
-        .thenReturn(getLoggingProperties(bundleName, bundleVersion));
+        .thenReturn((Map) getLoggingProperties(bundleName, bundleVersion));
     return mockPaxLoggingEvent;
   }
 }

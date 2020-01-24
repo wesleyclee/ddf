@@ -20,6 +20,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import javax.management.MBeanServer;
 import org.apache.log4j.Priority;
@@ -214,7 +215,7 @@ public class LoggingServiceTest {
     when(mockPaxLoggingEvent.getLevel()).thenReturn(getMockPaxLevel(level));
     when(mockPaxLoggingEvent.getMessage()).thenReturn(message);
     when(mockPaxLoggingEvent.getProperties())
-        .thenReturn(getLoggingProperties(bundleName, bundleVersion));
+        .thenReturn(((Map) getLoggingProperties(bundleName, bundleVersion)));
     return mockPaxLoggingEvent;
   }
 

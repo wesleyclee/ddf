@@ -26,7 +26,7 @@
     <packaging>bundle</packaging>
 
     <properties>
-        <pax.url.version>2.5.2</pax.url.version>
+        <pax.url.version>2.6.2</pax.url.version>
     </properties>
 
     <dependencies>
