@@ -50,7 +50,9 @@
         - Replaced the value of "geronimo-jms2-spec-version" with "${geronimo-jms_2_spec.version}" to keep it in line with the rest of the project
         - Added netty41 version and removed netty40 version
         - make camel and artemis qpid-proton-j-bundle-version and qpid-jms-client-version match
-        - Updated jackson to 2.9.10 and jackson databind to 2.9.10.1 -->
+        - Updated jackson to 2.9.10 and jackson databind to 2.9.10.1 -
+        - Overrides root pom's apache-log4j version with an older version for feature tests -->
+        <apache-log4j.version>2.8.2</apache-log4j.version>
         <aws-java-sdk-bundle-version>${aws-java-sdk-bundle.version}</aws-java-sdk-bundle-version>
         <commons-codec-version>${commons-codec.version}</commons-codec-version>
         <commons-httpclient-bundle-version>3.1_7</commons-httpclient-bundle-version>

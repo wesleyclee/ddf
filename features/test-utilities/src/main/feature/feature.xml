@@ -27,6 +27,7 @@
         <bundle>mvn:commons-io/commons-io/${commons-io.version}</bundle>
         <bundle>mvn:org.apache.commons/commons-lang3/3.5</bundle>
         <bundle>mvn:ddf.lib/test-common/${project.version}</bundle>
+        <bundle>mvn:javax.activation/javax.activation-api/1.2.0</bundle>
     </feature>
 
     <feature name="hamcrest-all" version="${project.version}"
