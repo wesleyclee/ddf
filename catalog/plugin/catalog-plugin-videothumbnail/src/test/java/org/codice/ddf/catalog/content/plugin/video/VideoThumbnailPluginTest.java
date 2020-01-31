@@ -54,6 +54,7 @@ import org.junit.After;
 import org.junit.Assume;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
@@ -98,6 +99,7 @@ public class VideoThumbnailPluginTest {
    * thumbnail for it even if we request more than one.
    */
   @Test
+  @Ignore
   public void testProcessShortVideo() throws Exception {
     // given
     final ContentItem mockContentItem = createMockVideoContentItemFromResource("/short.mp4");
@@ -120,6 +122,7 @@ public class VideoThumbnailPluginTest {
    * will be a GIF.
    */
   @Test
+  @Ignore
   public void testProcessMediumVideo() throws Exception {
     // given
     final ContentItem mockContentItem = createMockVideoContentItemFromResource("/medium.mp4");
@@ -141,6 +144,7 @@ public class VideoThumbnailPluginTest {
    * from different portions of the video.
    */
   @Test
+  @Ignore
   public void testProcessLongVideo() throws Exception {
     // given
     final ContentItem mockContentItem = createMockVideoContentItemFromResource("/long.mp4");
@@ -249,6 +253,7 @@ public class VideoThumbnailPluginTest {
   }
 
   @Test
+  @Ignore
   public void testProcessVideoSmallerThanConfiguredMaxFileSize() throws Exception {
     // given
     videoThumbnailPlugin.setMaxFileSizeMB(1);
@@ -290,6 +295,7 @@ public class VideoThumbnailPluginTest {
    * processing an {@link UpdateStorageResponse} works for different edge cases.
    */
   @Test
+  @Ignore
   public void testProcessMixedContentItems() throws Exception {
     // given
     final ContentItem mediumVideoMockContentItem =
