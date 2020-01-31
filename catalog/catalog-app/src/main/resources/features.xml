@@ -314,6 +314,7 @@
              description="Monitors directories to process content files.">
         <feature>camel</feature>
         <feature>apache-commons</feature>
+        <feature>cxf-jaxb</feature>
         <feature>catalog-transformer-bootflag</feature>
         <bundle>mvn:com.hazelcast/hazelcast/${hazelcast.version}</bundle>
         <bundle>mvn:ddf.catalog.core/catalog-core-camelcontext/${project.version}</bundle>

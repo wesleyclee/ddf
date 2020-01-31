@@ -73,6 +73,7 @@
 
     <feature name="mime-core-api" version="${project.version}"
              description="MIME API">
+        <bundle>mvn:javax.activation/javax.activation-api/1.2.0</bundle>
         <bundle>mvn:ddf.mime.core/mime-core-api/${project.version}</bundle>
     </feature>
 

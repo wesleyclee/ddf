@@ -75,6 +75,7 @@ public class TransactionMessageBodyReader implements MessageBodyReader<CswTransa
     xStream.allowTypeHierarchy(CswTransactionRequest.class);
     xStream.alias("csw:" + CswConstants.TRANSACTION, CswTransactionRequest.class);
     xStream.alias(CswConstants.TRANSACTION, CswTransactionRequest.class);
-    return (CswTransactionRequest) xStream.fromXML(inputStream);
+    final Object o = xStream.fromXML(inputStream);
+    return (CswTransactionRequest) o;
   }
 }

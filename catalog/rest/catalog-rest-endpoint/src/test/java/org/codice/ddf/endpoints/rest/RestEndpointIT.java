@@ -204,7 +204,9 @@ public class RestEndpointIT extends AbstractComponentTest {
             .add("ddf.catalog.core", "catalog-core-attachment")
             .add("ddf.catalog.rest", "catalog-rest-api")
             .add("ddf.catalog.rest", "catalog-rest-service-impl")
-            .add("ddf.catalog.rest", "catalog-rest-impl");
+            .add("ddf.catalog.rest", "catalog-rest-impl")
+            .add("javax.activation", "javax.activation-api")
+            .add("com.sun.activation", "jakarta.activation");
       }
 
       @Override
