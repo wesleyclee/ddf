@@ -11,6 +11,76 @@
  */
 -->
 
+# FIXME: Remove these notes!
+WIP upgrade of Karaf from 4.2.7 to 4.2.8. Yep. A _patch_ upgrade.
+
+* JAXB and javax.activation changes in Karaf force changes to multiple poms and features.
+I am not convinced the approach I've taken is the right approach.
+* Some change, somewhere, has led to a problem with the `bnd` library we use 
+([stacktrace here](#Bnd-problem-stacktrace)). There are two versions that I can see in the system 
+and neither seems to correctly parse _some_ classfile.
+* Some change has apparently altered startup order such that when running component tests,
+many (perhaps all) of our filters cannot be injected because their target servlet contexts have
+already started.
+* Either a commit rebased today (4 February 2020) or one in the chain of commits prior broke production.
+It had been installing and running _in what appeared to be a correct state_; now, it hangs on installation
+with a lot of errors attempting to connect to solrcloud's zookeeper port, `2181`. I don't know if 
+failing to connect is the issue or if it is merely informational.
+* Amongst the commits include several component tests that have been deleted. This was done in order
+to attempt to make some progress; they should be restored. Of note the `ITInstallProfilesFeatures` 
+test is the most shocking. When it uninstalls the `profile-standard` feature it somehow deletes most
+of the data directory in karaf. Needless to say, the test does not recover well.
+* Additionally, several tests in the `VideoThumbnailPluginTest` have been ignored. The Mac binary
+for `ffmpeg` has been compiled as a 32-bit application which will not run on Catalina or beyond.
+This is an issue across all versions of DDF, not just this branch.  
+ 
+### Bnd problem stacktrace
+```
+java.lang.ArrayIndexOutOfBoundsException: 19
+	at aQute.bnd.osgi.Clazz.parseClassFile(Clazz.java:576)
+	at aQute.bnd.osgi.Clazz.parseClassFile(Clazz.java:494)
+	at aQute.bnd.osgi.Clazz.parseClassFileWithCollector(Clazz.java:483)
+	at aQute.bnd.osgi.Clazz.parseClassFile(Clazz.java:473)
+	at aQute.bnd.osgi.Analyzer.analyzeJar(Analyzer.java:2177)
+	at aQute.bnd.osgi.Analyzer.analyzeBundleClasspath(Analyzer.java:2083)
+	at aQute.bnd.osgi.Analyzer.analyze(Analyzer.java:138)
+	at aQute.bnd.osgi.Analyzer.calcManifest(Analyzer.java:616)
+	at org.ops4j.pax.swissbox.bnd.BndUtils.createBundle(BndUtils.java:161)
+	at org.ops4j.pax.url.wrap.internal.Connection.getInputStream(Connection.java:83)
+	at java.net.URL.openStream(URL.java:1057)
+	at org.apache.karaf.features.internal.download.impl.SimpleDownloadTask.download(SimpleDownloadTask.java:78)
+	at org.apache.karaf.features.internal.download.impl.AbstractRetryableDownloadTask.run(AbstractRetryableDownloadTask.java:60)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+java.lang.ArrayIndexOutOfBoundsException: 19
+	at aQute.bnd.osgi.Clazz.parseClassFile(Clazz.java:576)
+	at aQute.bnd.osgi.Clazz.parseClassFile(Clazz.java:494)
+	at aQute.bnd.osgi.Clazz.parseClassFileWithCollector(Clazz.java:483)
+	at aQute.bnd.osgi.Clazz.parseClassFile(Clazz.java:473)
+	at aQute.bnd.osgi.Analyzer.analyzeJar(Analyzer.java:2177)
+	at aQute.bnd.osgi.Analyzer.analyzeBundleClasspath(Analyzer.java:2083)
+	at aQute.bnd.osgi.Analyzer.analyze(Analyzer.java:138)
+	at aQute.bnd.osgi.Analyzer.calcManifest(Analyzer.java:616)
+	at org.ops4j.pax.swissbox.bnd.BndUtils.createBundle(BndUtils.java:161)
+	at org.ops4j.pax.url.wrap.internal.Connection.getInputStream(Connection.java:83)
+	at java.net.URL.openStream(URL.java:1057)
+	at org.apache.karaf.features.internal.download.impl.SimpleDownloadTask.download(SimpleDownloadTask.java:78)
+	at org.apache.karaf.features.internal.download.impl.AbstractRetryableDownloadTask.run(AbstractRetryableDownloadTask.java:60)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+```
+# FIXME: End notes
+
 <img src="http://www.codice.org/ddf/images/ddf_logo.png"/>
 
 # [Distributed Data Framework \(DDF\)](http://ddf.codice.org/)
