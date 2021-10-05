@@ -194,15 +194,20 @@ Develop a custom Post-Query Plugin
 
 Develop a custom Pre-Delivery Plugin.
 
+<<<<<<< Updated upstream
 . Create a Java class that implements `PreDeliveryPlugin`. +
 `public class SamplePreDeliveryPlugin *implements* ddf.catalog.plugin.PreDeliveryPlugin`
+=======
+. Create a Java class that implements `PreDeliveryPlugin`. +
+`public class SamplePreDeliveryPlugin` *implements* `ddf.catalog.plugin.PreDeliveryPlugin`
+>>>>>>> Stashed changes
 
 . Implement the required methods. +
-`public Metacard processCreate(Metacard metacard) *throws* PluginExecutionException, StopProcessingException;`
-`public Update processUpdateMiss(Update update) *throws* PluginExecutionException,
+`public Metacard processCreate(Metacard metacard)` *throws* `PluginExecutionException, StopProcessingException;`
+`public Update processUpdateMiss(Update update)` *throws* `PluginExecutionException,
 StopProcessingException;`
- * `public Update processUpdateHit(Update update) *throws* PluginExecutionException, StopProcessingException;`
- * `public Metacard processCreate(Metacard metacard) *throws* PluginExecutionException, StopProcessingException;`
+ * `public Update processUpdateHit(Update update)` *throws* `PluginExecutionException, StopProcessingException;`
+ * `public Metacard processCreate(Metacard metacard)` *throws* `PluginExecutionException, StopProcessingException;`
 
 . Import the ${branding} interface packages to the bundle manifest (in addition to any other required packages). +
 `Import-Package: ddf.catalog,ddf.catalog.plugin,ddf.catalog.operation,ddf.catalog.event`
@@ -215,8 +220,13 @@ StopProcessingException;`
 
 Develop a custom Pre-Subscription Plugin.
 
+<<<<<<< Updated upstream
 . Create a Java class that implements `PreSubscriptionPlugin`. +
 `public class SamplePreSubscriptionPlugin *implements* ddf.catalog.plugin.PreSubscriptionPlugin`
+=======
+. Create a Java class that implements `PreSubscriptionPlugin`. +
+`public class SamplePreSubscriptionPlugin` *implements* `ddf.catalog.plugin.PreSubscriptionPlugin`
+>>>>>>> Stashed changes
 
 . Implement the required method.
  * `public Subscription process(Subscription input) *throws* PluginExecutionException, StopProcessingException;`
@@ -225,11 +235,16 @@ Develop a custom Pre-Subscription Plugin.
 
 Develop a custom Pre-Resource Plugin.
 
+<<<<<<< Updated upstream
 . Create a Java class that implements `PreResourcePlugin`.
 `public class SamplePreResourcePlugin *implements* ddf.catalog.plugin.PreResourcePlugin`
+=======
+. Create a Java class that implements `PreResourcePlugin`.
+`public class SamplePreResourcePlugin` *implements* `ddf.catalog.plugin.PreResourcePlugin`
+>>>>>>> Stashed changes
 
 . Implement the required method. +
- * `public ResourceRequest process(ResourceRequest input) *throws* PluginExecutionException, StopProcessingException;`
+ * `public ResourceRequest process(ResourceRequest input)` *throws* `PluginExecutionException, StopProcessingException;`
 
 . Import the ${branding} interface packages to the bundle manifest (in addition to any other required packages). +
 `Import-Package: ddf.catalog,ddf.catalog.plugin,ddf.catalog.operation`
@@ -245,11 +260,16 @@ Develop a custom Pre-Resource Plugin.
 
 Develop a custom Post-Resource Plugin.
 
+<<<<<<< Updated upstream
 . Create a Java class that implements `PostResourcePlugin`. +
 `public class SamplePostResourcePlugin *implements* ddf.catalog.plugin.PostResourcePlugin`
+=======
+. Create a Java class that implements `PostResourcePlugin`. +
+`public class SamplePostResourcePlugin` *implements* `ddf.catalog.plugin.PostResourcePlugin`
+>>>>>>> Stashed changes
 
 . Implement the required method. +
- * `public ResourceResponse process(ResourceResponse input) *throws* PluginExecutionException, StopProcessingException;`
+ * `public ResourceResponse process(ResourceResponse input)` *throws* `PluginExecutionException, StopProcessingException;`
 
 . Import the ${branding} interface packages to the bundle manifest (in addition to any other required packages). +
 `Import-Package: ddf.catalog,ddf.catalog.plugin,ddf.catalog.operation`
@@ -266,8 +286,13 @@ Develop a custom Post-Resource Plugin.
 
 Develop a custom Policy Plugin.
 
+<<<<<<< Updated upstream
 . Create a Java class that implements `PolicyPlugin`. +
 `public class SamplePolicyPlugin *implements* ddf.catalog.plugin.PolicyPlugin`
+=======
+. Create a Java class that implements `PolicyPlugin`. +
+`public class SamplePolicyPlugin` *implements* `ddf.catalog.plugin.PolicyPlugin`
+>>>>>>> Stashed changes
 
 . Implement the required methods. +
  * `PolicyResponse processPreCreate(Metacard input, Map<String, Serializable> properties) *throws* StopProcessingException;`
@@ -287,14 +312,19 @@ Develop a custom Policy Plugin.
 
 Develop a custom Access Plugin.
 
+<<<<<<< Updated upstream
 . Create a Java class that implements `AccessPlugin`. +
 `public class SamplePostResourcePlugin *implements* ddf.catalog.plugin.AccessPlugin`
+=======
+. Create a Java class that implements `AccessPlugin`. +
+`public class SamplePostResourcePlugin` *implements* `ddf.catalog.plugin.AccessPlugin`
+>>>>>>> Stashed changes
 
 . Implement the required methods. +
- * `CreateRequest processPreCreate(CreateRequest input) *throws* StopProcessingException;`
- * `UpdateRequest processPreUpdate(UpdateRequest input) *throws* StopProcessingException;`
- * `DeleteRequest processPreDelete(DeleteRequest input) *throws* StopProcessingException;`
- * `QueryRequest processPreQuery(QueryRequest input) *throws* StopProcessingException;`
+ * `CreateRequest processPreCreate(CreateRequest input)` *throws* `StopProcessingException;`
+ * `UpdateRequest processPreUpdate(UpdateRequest input)` *throws* `StopProcessingException;`
+ * `DeleteRequest processPreDelete(DeleteRequest input)` *throws* `StopProcessingException;`
+ * `QueryRequest processPreQuery(QueryRequest input)` *throws* `StopProcessingException;`
  * `QueryResponse processPostQuery(QueryResponse input) *throws* StopProcessingException;`
 
 . Import the DDF interface packages to the bundle manifest (in addition to any other required packages). +

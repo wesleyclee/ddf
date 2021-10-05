@@ -26,14 +26,14 @@
 |Maximum Concurrent Files
 |numThreads
 |Integer
-|Specifies the maximum number of concurrent files to be processed within a directory (maximum of 8).  If this number exceeds 8, 8 will be used in order to preserve system resources. Make sure that your system has enough memory to support the number of concurrent processing threads across all directory monitors.
+|Specifies the maximum number of concurrent files to be processed within a directory (maximum of 8). If this number exceeds 8, 8 will be used in order to preserve system resources. Make sure that your system has enough memory to support the number of concurrent processing threads across all directory monitors.
 |1
 |true
 
 |ReadLock Time Interval
 |readLockIntervalMilliseconds
 |Integer
-|Specifies the time to wait (in milliseconds) before acquiring a lock on a file in the monitored directory.  This interval is used for sleeping between attempts to acquire the read lock on a file to be ingested.  The default value of 100 milliseconds is recommended.
+|Specifies the time to wait (in milliseconds) before acquiring a lock on a file in the monitored directory. This interval is used for sleeping between attempts to acquire the read lock on a file to be ingested. The default value of 100 milliseconds is recommended.
 |100
 |true
 
