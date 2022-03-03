@@ -64,6 +64,8 @@ import org.codice.ddf.spatial.ogc.wfs.catalog.mapper.MetacardMapper;
 import org.codice.ddf.spatial.ogc.wfs.v110.catalog.common.Wfs11Constants;
 import org.codice.ddf.spatial.ogc.wfs.v110.catalog.common.Wfs11Constants.SPATIAL_OPERATORS;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import java.time.format.DateTimeFormatter;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Envelope;
 import org.locationtech.jts.geom.Geometry;
@@ -793,7 +795,13 @@ public class WfsFilterDelegate extends SimpleFilterDelegate<FilterType> {
   }
 
   private DateTime convertDateToIso8601Format(Date inputDate) {
-    return new DateTime(inputDate);
+
+    DateTimeFormatter fmt = DateTimeFormat.forPattern(DateTimeFormat.ISO_ZONED_DATE_TIME);
+    DateTime dt = new DateTime(inputDate);
+    LOGGER.debug("Datetime: Local Timestamp {}", fmt.print(dt));
+    DateTime utcDt = new DateTime(inputDate, new DateTimeZone('UTC'));
+    LOGGER.debug("Datetime: Utc Timestamp {}", fmt.print(utcDt));
+    return new DateTime(inputDate, new DateTimeZone('UTC');
   }
 
   // spatial operators

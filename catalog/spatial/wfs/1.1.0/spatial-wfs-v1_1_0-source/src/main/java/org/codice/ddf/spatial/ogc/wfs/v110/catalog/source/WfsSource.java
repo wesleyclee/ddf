@@ -286,6 +286,7 @@ public class WfsSource extends AbstractWfsSource {
             Collections.singletonList(FEATURE_MEMBER_ELEMENT),
             FeatureTypeType.class);
     this.scheduler = scheduler;
+    LOGGER.debug("Wfs Source Constructor Called, custom DDF changes are working (Wesley)");
   }
 
   /**
