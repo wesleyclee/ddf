@@ -796,12 +796,12 @@ public class WfsFilterDelegate extends SimpleFilterDelegate<FilterType> {
 
   private DateTime convertDateToIso8601Format(Date inputDate) {
 
-    DateTimeFormatter fmt = DateTimeFormat.forPattern(DateTimeFormat.ISO_ZONED_DATE_TIME);
+    DateTimeFormatter fmt = DateTimeFormattter.forPattern(DateTimeFormat.ISO_ZONED_DATE_TIME);
     DateTime dt = new DateTime(inputDate);
     LOGGER.debug("Datetime: Local Timestamp {}", fmt.print(dt));
-    DateTime utcDt = new DateTime(inputDate, new DateTimeZone('UTC'));
+    DateTime utcDt = new DateTime(inputDate, new DateTimeZone("UTC"));
     LOGGER.debug("Datetime: Utc Timestamp {}", fmt.print(utcDt));
-    return new DateTime(inputDate, new DateTimeZone('UTC');
+    return new DateTime(inputDate, new DateTimeZone("UTC"));
   }
 
   // spatial operators
